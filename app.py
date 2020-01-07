@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -38,6 +38,11 @@ def businessman_by_id(id):
         if person['id'] == id:
             return jsonify(person), 200 
     return jsonify({"error": "id couldn't be found"})
+
+@app.route('/businessman', methods=['POST'])
+def add_businessman():
+    data = request.get_json()
+    return jsonify(data), 201
 
 if __name__ == '__main__':
     app.run(debug=True)
