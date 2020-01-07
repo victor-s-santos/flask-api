@@ -42,7 +42,9 @@ def businessman_by_id(id):
 @app.route('/businessman', methods=['POST'])
 def add_businessman():
     data = request.get_json()
+    businessman.append(data)
     return jsonify(data), 201
+
 
 if __name__ == '__main__':
     app.run(debug=True)
