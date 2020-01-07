@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -23,7 +23,8 @@ businessman = [
 
 @app.route('/businessman', methods=['GET'])#desnecessário, já que o get é método padrão
 def home():
-    return "It's running as a charm", 200
+    app.config['JSON_AS_ASCII'] = False#evitando problemas com caracteres especiais
+    return jsonify(businessman), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
