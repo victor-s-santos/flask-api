@@ -4,8 +4,8 @@ app = Flask(__name__)
 
 businessman = [
     {
-        'name': 'Luiz Barsi',
-        'historic': 'Considerado o maior investidor individual do Brasil, Luiz Barsi, agora com 80 anos, já foi engraxate. Começou sua carreira de investidor na década de 1960, comprando ações da Cesp. Segundo reportagem do jornal O Estado de S. Paulo de agosto de 2019, seu patrimônio chega a quase R$ 2 bilhões. Mesmo assim, mantém hábitos simples e anda de metrô pela cidade. Sua estratégia de investimento na bolsa de valores consiste em comprar ações que pagam bons dividendos e ficar com elas, independentemente da variação no preço dos papéis. Segundo ele, a ideia não é investir em ações da bolsa, mas comprar participações em boas empresas.'
+        "name": "Luiz Barsi",
+        "historic": "Considerado o maior investidor individual do Brasil, Luiz Barsi, agora com 80 anos, já foi engraxate. Começou sua carreira de investidor na década de 1960, comprando ações da Cesp. Segundo reportagem do jornal O Estado de S. Paulo de agosto de 2019, seu patrimônio chega a quase R$ 2 bilhões. Mesmo assim, mantém hábitos simples e anda de metrô pela cidade. Sua estratégia de investimento na bolsa de valores consiste em comprar ações que pagam bons dividendos e ficar com elas, independentemente da variação no preço dos papéis. Segundo ele, a ideia não é investir em ações da bolsa, mas comprar participações em boas empresas."
     },
     {
         'name': 'Victor Adler',
@@ -24,6 +24,7 @@ businessman = [
 @app.route('/businessman', methods=['GET'])#desnecessário, já que o get é método padrão
 def home():
     app.config['JSON_AS_ASCII'] = False#evitando problemas com caracteres especiais
+    app.config['JSON_SORT_KEYS'] = False#ignorando a ordem alfabética de posicionamento
     return jsonify(businessman), 200
 
 if __name__ == '__main__':
