@@ -45,6 +45,13 @@ def add_businessman():
     businessman.append(data)
     return jsonify(data), 201
 
-
+@app.route('/businessman/<int:id>', methods=['PUT'])
+def update_businessman(id):
+    for bm in businessman:
+        if bm['id'] == id:
+            bm['name'] = request.get_json().get('name')
+            return jsonify(bm), 200
+        return jsonify({"error": "id couldn't be found"})
+        
 if __name__ == '__main__':
     app.run(debug=True)
